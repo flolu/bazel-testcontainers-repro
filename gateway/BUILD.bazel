@@ -1,0 +1,32 @@
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+
+package(default_visibility = ["//visibility:public"])
+
+ts_library(
+    name = "lib",
+    srcs = glob(
+        include = ["**/*.ts"],
+        exclude = ["**/*.test.ts"],
+    ),
+    deps = [
+        "@npm//@types/express",
+        "@npm//@types/node",
+        "@npm//express",
+    ],
+)
+
+ts_library(
+    name = "test_lib",
+    srcs = glob(["*.test.ts"]),
+    deps = [
+        ":lib",
+        "@npm//@types/jasmine",
+        "@npm//jasmine",
+    ],
+)
+
+jasmine_node_test(
+    name = "test",
+    deps = [":test_lib"],
+)

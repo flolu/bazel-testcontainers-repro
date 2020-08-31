@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "es5"
+  },
+  "exclude": ["node_modules", "bazel-out", "bazel-bin", "bazel-testlogs", "dist"]
+}
