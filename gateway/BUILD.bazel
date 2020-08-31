@@ -19,10 +19,17 @@ ts_library(
 ts_library(
     name = "test_lib",
     srcs = glob(["*.test.ts"]),
+    data = [
+        "//:docker-compose.json",
+    ],
     deps = [
         ":lib",
+        "@npm//@types/axios",
         "@npm//@types/jasmine",
+        "@npm//@types/node",
+        "@npm//axios",
         "@npm//jasmine",
+        "@npm//testcontainers",
     ],
 )
 
