@@ -12,7 +12,7 @@ Works fine
 yarn test:jasmine
 ```
 
-But running tests with Bazel throws error
+But running tests with Bazel throws error (only when trying to expose a port)
 
 ```
 yarn test

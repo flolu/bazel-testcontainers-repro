@@ -5,10 +5,10 @@ package(default_visibility = ["//visibility:public"])
 
 ts_library(
     name = "lib",
-    srcs = glob(
-        include = ["**/*.ts"],
-        exclude = ["**/*.test.ts"],
-    ),
+    srcs = [
+        "index.ts",
+        "message.ts",
+    ],
     deps = [
         "@npm//@types/express",
         "@npm//@types/node",
@@ -17,11 +17,24 @@ ts_library(
 )
 
 ts_library(
-    name = "test_lib",
-    srcs = glob(["*.test.ts"]),
-    data = [
-        "//:docker-compose.json",
+    name = "test_fails_lib",
+    srcs = ["fails.test.ts"],
+    data = ["//:docker-compose.fails.yaml"],
+    deps = [
+        ":lib",
+        "@npm//@types/axios",
+        "@npm//@types/jasmine",
+        "@npm//@types/node",
+        "@npm//axios",
+        "@npm//jasmine",
+        "@npm//testcontainers",
     ],
+)
+
+ts_library(
+    name = "test_works_lib",
+    srcs = ["works.test.ts"],
+    data = ["//:docker-compose.works.yaml"],
     deps = [
         ":lib",
         "@npm//@types/axios",
@@ -34,7 +47,13 @@ ts_library(
 )
 
 jasmine_node_test(
-    name = "test",
+    name = "test_fails",
     templated_args = ["--bazel_patch_module_resolver"],
-    deps = [":test_lib"],
+    deps = [":test_fails_lib"],
+)
+
+jasmine_node_test(
+    name = "test_works",
+    templated_args = ["--bazel_patch_module_resolver"],
+    deps = [":test_works_lib"],
 )

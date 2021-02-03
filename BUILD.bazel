@@ -1,4 +1,5 @@
 exports_files([
     "tsconfig.json",
-    "docker-compose.json",
+    "docker-compose.works.yaml",
+    "docker-compose.fails.yaml",
 ])

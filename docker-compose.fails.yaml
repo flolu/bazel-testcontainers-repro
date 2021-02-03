@@ -1,0 +1,14 @@
+version: '3'
+services:
+  gateway:
+    image: node:lts
+    container_name: repro_gateway-fails
+    command: yarn run ts-node-dev gateway
+    working_dir: /
+    volumes:
+      - ./package.json:/package.json
+      - ./tsconfig.json:/tsconfig.json
+      - ./node_modules:/node_modules
+      - ./gateway:/gateway
+    ports:
+      - 3000:3000
