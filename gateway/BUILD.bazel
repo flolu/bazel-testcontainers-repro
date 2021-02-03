@@ -47,13 +47,13 @@ ts_library(
 )
 
 jasmine_node_test(
-    name = "test_fails",
-    templated_args = ["--bazel_patch_module_resolver"],
-    deps = [":test_fails_lib"],
-)
-
-jasmine_node_test(
     name = "test_works",
     templated_args = ["--bazel_patch_module_resolver"],
     deps = [":test_works_lib"],
+)
+
+jasmine_node_test(
+    name = "test_fails",
+    templated_args = ["--bazel_patch_module_resolver"],
+    deps = [":test_fails_lib"],
 )
