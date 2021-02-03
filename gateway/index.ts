@@ -1,6 +1,6 @@
 import * as express from 'express'
 
-import message from './message'
+import {message} from './message'
 
 const app = express()
 

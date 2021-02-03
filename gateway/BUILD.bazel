@@ -35,5 +35,6 @@ ts_library(
 
 jasmine_node_test(
     name = "test",
+    templated_args = ["--bazel_patch_module_resolver"],
     deps = [":test_lib"],
 )
