@@ -5,7 +5,7 @@ import {DockerComposeEnvironment} from 'testcontainers'
 import {message} from './message'
 
 describe('integration test', () => {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 5 * 60 * 1000;
 
   it('starts gateway with port', async () => {
     const filepath = path.join(__dirname, '../')
